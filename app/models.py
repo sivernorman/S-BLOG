@@ -22,7 +22,7 @@ class User(UserMixin,db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
-    pitches = db.relationship('Pitch', backref='user', lazy="dynamic")
+    pitches = db.relationship('Pitch', backref='usr', lazy="dynamic")
     comments = db.relationship("Comment", backref="user", lazy="dynamic")
 
 

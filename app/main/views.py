@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
 from .forms import PitchForm,CommentForm,UpdateProfile
-from ..email import User,Pitch,Comment
+from ..models import User,Pitch,Comment
 from .. import db,photos
 import markdown2
 from flask_login import login_required, current_user
@@ -19,9 +19,7 @@ def index():
     pitches =Pitch.query.order_by(Pitch.date.desc()).all()
     title = " S-Blog -- Home"
     sambu = random_post()
-    quote = sambu["quote"]
-    quote_author = sambu ["author"]
-    return render_template('index.html', title = title, pitches = pitches, quote = quote , quote_author=quote_author)
+    return render_template('index.html', title = title, pitches = pitches)
 
 
 @main.route('/pitches/<category>')
@@ -155,3 +153,7 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+@main.route('/login')
+def login():
+    return render_template('login.html')

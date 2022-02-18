@@ -16,8 +16,10 @@
   {% endfor %}
   <h1 class="text-center">Welcome to  S-Blog.</h1>
   <div class="post">
-    <p>{{quote}}</p>
-    <p id="name">"{{quote_author}}"</p>
+      {%for quote in quote%}
+      <p>{{quote.quote}}</p>
+      <p id="name">"{{quote.author}}"</p>  
+      {%endfor%}
   </div>
   <br>
   <h2 class="text-center"><u><strong><i>Categories</i></strong></u></h2>

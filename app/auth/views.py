@@ -1,7 +1,7 @@
 from . import auth
 from flask import flash,render_template,redirect,url_for,request
 from flask_login import login_user,logout_user,login_required
-from ..email import User
+from ..models import User
 from .forms import RegistrationForm,LoginForm
 from .. import db
 from ..email import mail_message
@@ -41,7 +41,7 @@ def register():
 
         flash("You've been successfully registered!")
 
-        mail_message("Welcome to S-Blog","email/welcome_user",user.email,user=user)
+        # mail_message("Welcome to S-Blog","email/welcome_user",user.email,user=user)
 
 
 
