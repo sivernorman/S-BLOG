@@ -3,8 +3,8 @@ import os
 class Config:
 
     SECRET_KEY ='SECRET_KEY'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:silver312@localhost/blogger'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
+
  
 
     #  email configurations
@@ -22,9 +22,7 @@ class Config:
 
 
 class ProdConfig(Config):
-        SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-        debug = os.environ.get("DEBUG")
-
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 
 class TestConfig(Config):
      pass
