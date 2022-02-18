@@ -22,19 +22,14 @@
       {%endfor%}
   </div>
   <br>
-  <h2 class="text-center"><u><strong><i>Categories</i></strong></u></h2>
-  <br>
-  <hr>
-  <br>
-  <div class="center">
-    <div class="row categories">
-      <a href="{{url_for('main.pitches_category',category='Fashion Blog')}}">
-        <div class="category col-xs-12 col-sm-12 col-md-4 col-lg-4">
-        <span>Fashion Blogs</span>
-      </div></a>
-      <a href="{{url_for('main.pitches_category',category='Food Blog')}}"><div class="category col-xs-12 col-sm-12 col-md-4 col-lg-4">
-        <span>Food Blogs</span>
-      </div></a>
+  <div class="container">
+    {%for pitch in pitches%}
+    <h2>{{pitch.title}}</h2>
+    <h2>{{pitch.category}}</h2>
+    <h2>{{pitch.content}}</h2>
+    {%endfor%}
+  </div>
+ 
      </div>
   </div>
 </div>

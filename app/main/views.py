@@ -34,7 +34,7 @@ def pitches_category(category):
     else:
         pitches = Pitch.query.filter_by(category=category).order_by(Pitch.time.desc()).all()
 
-    return render_template('pitches.html',title = title,pitches = pitches)
+    return render_template('index.html',title = title,pitches = pitches)
 
 
 @main.route('/<uname>/new/pitch', methods=['GET','POST'])
@@ -61,10 +61,7 @@ def new_pitch(uname):
         date = date[0:10]
         pitch = Pitch(title=title,
                       content=content,
-                      category=category,
-                      user=current_user,
-                      date = date,
-                      time = time)
+                      category=category)
 
         db.session.add(pitch)
         db.session.commit()
